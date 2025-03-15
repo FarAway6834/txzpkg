@@ -1,1 +1,1 @@
-__all__, __version__ = ['download'], '0.0.4'
+__all__, __version__ = ['download'], '0.0.5'
