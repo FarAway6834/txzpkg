@@ -58,3 +58,5 @@ def txzpkg(x):
 
 def main():
     txzpkg(input('txzpkg-download : ')) if len(argv) == 1 else txzpkg(argv[1])
+
+if __name__ == "__main__": main()
