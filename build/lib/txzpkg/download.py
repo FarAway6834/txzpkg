@@ -27,7 +27,7 @@ def enterdir(dir):
 	yield from __enterdirc__(dir, pwd())
 
 def unzipping_core(umm, zipf):
-	with entetdir(umm.dir) as man: zipf.extractall()
+	with enterdir(umm.dir) as man: zipf.extractall()
 
 def unziping_part(f, fun):
 	 with zip(f) as zipf:
@@ -55,7 +55,7 @@ def txzpkg(x):
 			with enterdir(dir):
 				try: pipman(['download', x])
 				finally:
-					for _ in ((untgzing_part if f[-4:] == '.whl' else untgzing_part)(f, txzf.add) for f in ls()):pass
+					for _ in ((unziping_part if f[-4:] == '.whl' else untgzing_part)(f, txzf.add) for f in ls()):pass
 
 def main():
     txzpkg(input('txzpkg-download : ')) if len(argv) == 1 else txzpkg(argv[1])
