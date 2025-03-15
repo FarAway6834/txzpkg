@@ -55,7 +55,7 @@ def txzpkg(x):
 			with enterdir(dir):
 				try: pipman(['download', x])
 				finally:
-					for _ in ((untgzing_part if f[-4:] == '.whl' else untgzing_part)(f, txzf.add) for f in ls()):pass
+					for _ in ((unziping_part if f[-4:] == '.whl' else untgzing_part)(f, txzf.add) for f in ls()):pass
 
 def main():
     txzpkg(input('txzpkg-download : ')) if len(argv) == 1 else txzpkg(argv[1])
