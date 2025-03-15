@@ -7,6 +7,7 @@ from os import rename as mv
 from os import mkdir
 from os import getcwd as pwd
 from functools import partial
+from sys import argv
 from contextlib import contextmanager as _withibler
 try : from pip import main as pipman
 except: from pip._internal import main as pipman
@@ -54,3 +55,8 @@ def txzpkg(x):
 			with enterdir(dir):
 				try: pipman(['download', x])
 				finally: for _ in (untgzing_part if f[-4:] == '.whl' else untgzing_part(f, txzf.add) for f in ls())
+
+def main():
+    txzpkg(input('txzpkg-download : ')) if len(argv) == 1 else txzpkg(argv[1])
+
+if __name__ == "__main__": main()
