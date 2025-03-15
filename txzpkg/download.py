@@ -8,7 +8,7 @@ from os import mkdir
 from os import getcwd as pwd
 from functools import partial
 from contextlib import contextmanager as _withibler
-try: from pip import main as pipman
+try : from pip import main as pipman
 except: from pip._internal import main as pipman
 
 class EnterDir:
@@ -25,20 +25,28 @@ def __enterdirc__(dir, pwdv):
 def enterdir(dir):
 	yield from __enterdirc__(dir, pwd())
 
+def unzipping_core(umm, zipf):
+	with entetdir(umm.dir) as man: zipf.extractall()
+
 def unziping_part(f, fun):
 	 with zip(f) as zipf:
  		with tempdir() as txzingsp:
  			with enterdir(txzingsp) as umm:
  				umm.dir = f[:-4]
  				mkdir(umm.dir)
- 				with entetdir(umm.dir) as man: zipf.extractall()
+ 				unzipping_core(umm, zipf)
  				fun(umm.dir)
+
+def untgzing_push(txzingsp, fun, tgzf):
+	with enterdir(txzingsp) as dir: fun(ls(tgzf)[0])
 
 def untgzing_part(f, fun):
 	with tar(f, 'r:gz') as tgzf:
 		with tempdir() as txzingsp:
-			tgzf.extractall(txzingsp)
-			with enterdir(txzingsp) as dir: fun(ls(tgzf)[0])
+			try: pass
+			finally:
+				try: tgzf.extractall(txzingsp)
+				finally: untgzing_push(txzingsp, fun, tgzf)
 
 def txzpkg(x):
 	with tempdir() as dir:
