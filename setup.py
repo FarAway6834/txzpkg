@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='txzpkg',
-    version='0.0.4',
+    version='0.0.5',
     description='download pkg as txz, install as txz',
     author='du7ec',
     author_email='dutec6834@gmail.com',
