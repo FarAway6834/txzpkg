@@ -27,7 +27,7 @@ def enterdir(dir):
 	yield from __enterdirc__(dir, pwd())
 
 def unzipping_core(umm, zipf):
-	with entetdir(umm.dir) as man: zipf.extractall()
+	with enterdir(umm.dir) as man: zipf.extractall()
 
 def unziping_part(f, fun):
 	 with zip(f) as zipf:
